@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:prevent_keypress_from_water"
         mc:Ignorable="d"
-        Title="键盘监控" Height="600" Width="1200" WindowStartupLocation="CenterScreen">
+        Title="Prevent Keypress from Water" Height="600" Width="1200" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="KeyboardButtonStyle" TargetType="Button">
             <Setter Property="Margin" Value="2"/>
@@ -16,6 +16,8 @@
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="MinWidth" Value="40"/>
             <Setter Property="MinHeight" Value="40"/>
+            <Setter Property="Tag" Value="{Binding RelativeSource={RelativeSource Self}, Path=Key}"/>
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -42,9 +44,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
-        <TextBlock Text="键盘监控" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+        <TextBlock Text="Prevent Keypress from Water" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
         
         <Border Grid.Row="1" BorderBrush="#CCCCCC" BorderThickness="1" CornerRadius="10" Padding="20" Background="#F8F8F8">
             <Grid>
@@ -63,26 +66,26 @@
                 
                 <!-- 功能键区域 (F1-F12) -->
                 <UniformGrid Grid.Row="0" Rows="1" Columns="13">
-                    <Button Content="Esc" Style="{StaticResource SpecialKeyStyle}"/>
-                    <Button Content="F1" Style="{StaticResource FunctionKeyStyle}"/>
-                    <Button Content="F2" Style="{StaticResource FunctionKeyStyle}"/>
-                    <Button Content="F3" Style="{StaticResource FunctionKeyStyle}"/>
-                    <Button Content="F4" Style="{StaticResource FunctionKeyStyle}"/>
-                    <Button Content="F5" Style="{StaticResource FunctionKeyStyle}"/>
-                    <Button Content="F6" Style="{StaticResource FunctionKeyStyle}"/>
-                    <Button Content="F7" Style="{StaticResource FunctionKeyStyle}"/>
-                    <Button Content="F8" Style="{StaticResource FunctionKeyStyle}"/>
-                    <Button Content="F9" Style="{StaticResource FunctionKeyStyle}"/>
-                    <Button Content="F10" Style="{StaticResource FunctionKeyStyle}"/>
-                    <Button Content="F11" Style="{StaticResource FunctionKeyStyle}"/>
-                    <Button Content="F12" Style="{StaticResource FunctionKeyStyle}"/>
+                    <Button Content="Esc" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="13"/>
+                    <Button Content="F1" Style="{StaticResource FunctionKeyStyle}" Click="Button_Click" Tag="90"/>
+                    <Button Content="F2" Style="{StaticResource FunctionKeyStyle}" Click="Button_Click" Tag="91"/>
+                    <Button Content="F3" Style="{StaticResource FunctionKeyStyle}" Click="Button_Click" Tag="92"/>
+                    <Button Content="F4" Style="{StaticResource FunctionKeyStyle}" Click="Button_Click" Tag="93"/>
+                    <Button Content="F5" Style="{StaticResource FunctionKeyStyle}" Click="Button_Click" Tag="94"/>
+                    <Button Content="F6" Style="{StaticResource FunctionKeyStyle}" Click="Button_Click" Tag="95"/>
+                    <Button Content="F7" Style="{StaticResource FunctionKeyStyle}" Click="Button_Click" Tag="96"/>
+                    <Button Content="F8" Style="{StaticResource FunctionKeyStyle}" Click="Button_Click" Tag="97"/>
+                    <Button Content="F9" Style="{StaticResource FunctionKeyStyle}" Click="Button_Click" Tag="98"/>
+                    <Button Content="F10" Style="{StaticResource FunctionKeyStyle}" Click="Button_Click" Tag="99"/>
+                    <Button Content="F11" Style="{StaticResource FunctionKeyStyle}" Click="Button_Click" Tag="100"/>
+                    <Button Content="F12" Style="{StaticResource FunctionKeyStyle}" Click="Button_Click" Tag="101"/>
                 </UniformGrid>
                 
                 <!-- 方向键和编辑键区域 -->
                 <UniformGrid Grid.Row="0" Grid.Column="2" Rows="1" Columns="3">
-                    <Button Content="PrtSc" Style="{StaticResource SpecialKeyStyle}"/>
-                    <Button Content="ScrLk" Style="{StaticResource SpecialKeyStyle}"/>
-                    <Button Content="Pause" Style="{StaticResource SpecialKeyStyle}"/>
+                    <Button Content="PrtSc" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="30"/>
+                    <Button Content="ScrLk" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="115"/>
+                    <Button Content="Pause" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="7"/>
                 </UniformGrid>
                 <Grid Grid.Row="2" Grid.Column="2">
                     <Grid.RowDefinitions>
@@ -97,16 +100,16 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <UniformGrid Grid.Row="0" Grid.Column="0" Rows="2" Columns="3">
-                        <Button Content="Insert" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Content="Home" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Content="PgUp" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Content="Delete" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Content="End" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Content="PgDn" Style="{StaticResource SpecialKeyStyle}"/>
+                        <Button Content="Insert" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="31"/>
+                        <Button Content="Home" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="22"/>
+                        <Button Content="PgUp" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="19"/>
+                        <Button Content="Delete" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="32"/>
+                        <Button Content="End" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="21"/>
+                        <Button Content="PgDn" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="20"/>
                     </UniformGrid>
 
                     <UniformGrid Grid.Row="1" Grid.Column="0" Rows="1" Columns="3">
-                        <Button Style="{StaticResource KeyboardButtonStyle}" Opacity="0"/>
+                        <Button Style="{StaticResource KeyboardButtonStyle}" Opacity="0" Click="Button_Click"/>
                     </UniformGrid>
 
                     <!-- 方向键区域 -->
@@ -121,10 +124,10 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button Grid.Row="0" Grid.Column="1" Content="↑" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Grid.Row="1" Grid.Column="0" Content="←" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Grid.Row="1" Grid.Column="1" Content="↓" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Grid.Row="1" Grid.Column="2" Content="→" Style="{StaticResource SpecialKeyStyle}"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="↑" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="24"/>
+                        <Button Grid.Row="1" Grid.Column="0" Content="←" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="23"/>
+                        <Button Grid.Row="1" Grid.Column="1" Content="↓" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="26"/>
+                        <Button Grid.Row="1" Grid.Column="2" Content="→" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="25"/>
                     </Grid>
                 </Grid>
                 
@@ -140,92 +143,92 @@
                     
                     <!-- 第一行: 数字键 -->
                     <UniformGrid Grid.Row="0" Rows="1">
-                        <Button Content="`" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="1" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="2" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="3" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="4" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="5" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="6" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="7" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="8" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="9" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="0" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="-" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="=" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="Backspace" Style="{StaticResource SpecialKeyStyle}"/>
+                        <Button Content="`" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="146"/>
+                        <Button Content="1" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="35"/>
+                        <Button Content="2" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="36"/>
+                        <Button Content="3" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="37"/>
+                        <Button Content="4" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="38"/>
+                        <Button Content="5" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="39"/>
+                        <Button Content="6" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="40"/>
+                        <Button Content="7" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="41"/>
+                        <Button Content="8" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="42"/>
+                        <Button Content="9" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="43"/>
+                        <Button Content="0" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="34"/>
+                        <Button Content="-" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="143"/>
+                        <Button Content="=" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="141"/>
+                        <Button Content="Backspace" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="2"/>
                     </UniformGrid>
                     
                     <!-- 第二行: QWERTY -->
                     <UniformGrid Grid.Row="1" Rows="1">
-                        <Button Content="Tab" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Content="Q" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="W" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="E" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="R" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="T" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="Y" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="U" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="I" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="O" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="P" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="[" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="]" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="\" Style="{StaticResource KeyboardButtonStyle}"/>
+                        <Button Content="Tab" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="3"/>
+                        <Button Content="Q" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="60"/>
+                        <Button Content="W" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="66"/>
+                        <Button Content="E" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="48"/>
+                        <Button Content="R" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="61"/>
+                        <Button Content="T" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="63"/>
+                        <Button Content="Y" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="68"/>
+                        <Button Content="U" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="64"/>
+                        <Button Content="I" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="52"/>
+                        <Button Content="O" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="58"/>
+                        <Button Content="P" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="59"/>
+                        <Button Content="[" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="149"/>
+                        <Button Content="]" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="151"/>
+                        <Button Content="\" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="150"/>
                     </UniformGrid>
                     
                     <!-- 第三行: ASDFG -->
                     <UniformGrid Grid.Row="2" Rows="1">
-                        <Button Content="Caps Lock" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Content="A" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="S" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="D" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="F" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="G" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="H" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="J" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="K" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="L" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content=";" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="'" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="Enter" Style="{StaticResource SpecialKeyStyle}"/>
+                        <Button Content="Caps Lock" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="8"/>
+                        <Button Content="A" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="44"/>
+                        <Button Content="S" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="62"/>
+                        <Button Content="D" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="47"/>
+                        <Button Content="F" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="49"/>
+                        <Button Content="G" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="50"/>
+                        <Button Content="H" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="51"/>
+                        <Button Content="J" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="53"/>
+                        <Button Content="K" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="54"/>
+                        <Button Content="L" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="55"/>
+                        <Button Content=";" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="140"/>
+                        <Button Content="'" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="152"/>
+                        <Button Content="Enter" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="6"/>
                     </UniformGrid>
                     
                     <!-- 第四行: ZXCVB -->
                     <UniformGrid Grid.Row="3" Rows="1">
-                        <Button Content="Shift" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Content="Z" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="X" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="C" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="V" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="B" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="N" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="M" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="," Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="." Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="/" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="Shift" Style="{StaticResource SpecialKeyStyle}"/>
+                        <Button Content="Shift" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="116"/>
+                        <Button Content="Z" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="69"/>
+                        <Button Content="X" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="67"/>
+                        <Button Content="C" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="46"/>
+                        <Button Content="V" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="65"/>
+                        <Button Content="B" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="45"/>
+                        <Button Content="N" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="57"/>
+                        <Button Content="M" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="56"/>
+                        <Button Content="," Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="142"/>
+                        <Button Content="." Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="144"/>
+                        <Button Content="/" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="145"/>
+                        <Button Content="Shift" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="117"/>
                     </UniformGrid>
                     
                     <!-- 第五行: 控制键 -->
                     <UniformGrid Grid.Row="4" Rows="1">
-                        <Button Content="Ctrl" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Content="Win" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Content="Alt" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Content="Space" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="Alt" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Content="Win" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Content="Menu" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Content="Ctrl" Style="{StaticResource SpecialKeyStyle}"/>
+                        <Button Content="Ctrl" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="118"/>
+                        <Button Content="Win" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="70"/>
+                        <Button Content="Alt" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="120"/>
+                        <Button Content="Space" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="18"/>
+                        <Button Content="Alt" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="121"/>
+                        <Button Content="Win" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="72"/>
+                        <Button Content="Menu" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="119"/>
+                        <Button Content="Ctrl" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="119"/>
                     </UniformGrid>
                 </Grid>
 
                 <!-- 数字键和编辑键区域 -->
                 <UniformGrid Grid.Row="0" Grid.Column="4" Rows="1" Columns="4">
-                    <Button Content="Custom" Style="{StaticResource SpecialKeyStyle}"/>
-                    <Button Content="Custom" Style="{StaticResource SpecialKeyStyle}"/>
-                    <Button Content="Custom" Style="{StaticResource SpecialKeyStyle}"/>
-                    <Button Content="Custom" Style="{StaticResource SpecialKeyStyle}"/>
+                    <Button Content="Custom" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click"/>
+                    <Button Content="Custom" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click"/>
+                    <Button Content="Custom" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click"/>
+                    <Button Content="Custom" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click"/>
                 </UniformGrid>
                 <Grid Grid.Row="2" Grid.Column="4">
                     <Grid.RowDefinitions>
@@ -242,10 +245,10 @@
                     </Grid.ColumnDefinitions>
                     <!-- 数字键盘第一行 -->
                     <UniformGrid Grid.Row="0" Rows="1" Columns="4">
-                        <Button Content="Num Lock" Style="{StaticResource SpecialKeyStyle}"/>
-                        <Button Content="/" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="*" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Content="-" Style="{StaticResource KeyboardButtonStyle}"/>
+                        <Button Content="Num Lock" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="114"/>
+                        <Button Content="/" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="89"/>
+                        <Button Content="*" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="84"/>
+                        <Button Content="-" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="87"/>
                     </UniformGrid>
 
                     <!-- 数字键盘第二、三行 -->
@@ -261,14 +264,14 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button Grid.Row="0" Grid.Column="0" Content="7" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Grid.Row="0" Grid.Column="1" Content="8" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Grid.Row="0" Grid.Column="2" Content="9" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Grid.Row="0" Grid.Column="3" Content="+" Style="{StaticResource KeyboardButtonStyle}" Grid.RowSpan="2"/>
+                        <Button Grid.Row="0" Grid.Column="0" Content="7" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="81"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="8" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="82"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="9" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="83"/>
+                        <Button Grid.Row="0" Grid.Column="3" Content="+" Style="{StaticResource KeyboardButtonStyle}" Grid.RowSpan="2" Click="Button_Click" Tag="85"/>
 
-                        <Button Grid.Row="1" Grid.Column="0" Content="4" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Grid.Row="1" Grid.Column="1" Content="5" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Grid.Row="1" Grid.Column="2" Content="6" Style="{StaticResource KeyboardButtonStyle}"/>
+                        <Button Grid.Row="1" Grid.Column="0" Content="4" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="78"/>
+                        <Button Grid.Row="1" Grid.Column="1" Content="5" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="79"/>
+                        <Button Grid.Row="1" Grid.Column="2" Content="6" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="80"/>
                     </Grid>
 
                     <!-- 数字键盘第四、五行 -->
@@ -284,16 +287,20 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button Grid.Row="0" Content="1" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Grid.Row="0" Grid.Column="1" Content="2" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Grid.Row="0" Grid.Column="2" Content="3" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Content="Enter" Style="{StaticResource SpecialKeyStyle}"/>
+                        <Button Grid.Row="0" Content="1" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="75"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="2" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="76"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="3" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="77"/>
+                        <Button Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Content="Enter" Style="{StaticResource SpecialKeyStyle}" Click="Button_Click" Tag="6"/>
 
-                        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="0" Style="{StaticResource KeyboardButtonStyle}"/>
-                        <Button Grid.Row="1" Grid.Column="2" Content="." Style="{StaticResource KeyboardButtonStyle}"/>
+                        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="0" Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="74"/>
+                        <Button Grid.Row="1" Grid.Column="2" Content="." Style="{StaticResource KeyboardButtonStyle}" Click="Button_Click" Tag="88"/>
                     </Grid>
                 </Grid>
             </Grid>
         </Border>
+
+        <StackPanel Grid.Row="2">
+            <TextBlock Text="{Binding BlockedKeyInfo}" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+        </StackPanel>
     </Grid>
 </Window>
