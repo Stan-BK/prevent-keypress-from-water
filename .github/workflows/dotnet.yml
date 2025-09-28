@@ -26,6 +26,7 @@ jobs:
         run: dotnet restore
 
       - name: Publish self-contained win-x64
+        shell: bash
         run: |
           dotnet publish prevent-keypress-from-water.csproj \
             -c Release \
